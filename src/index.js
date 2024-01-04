@@ -49,7 +49,24 @@ const pizzaData = [
 function App() {
   return (
     <div>
-      <h1>Hello React !</h1>
+      <Header />
+      <Menu />
+      <Footer />
+    </div>
+  );
+}
+
+function Header() {
+  return <h1>FAST React Pizza Co.</h1>;
+}
+
+function Menu() {
+  return (
+    <div>
+      <h2>Our Menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
       <Pizza />
       <Pizza />
       <Pizza />
@@ -57,15 +74,35 @@ function App() {
   );
 }
 
+function Footer() {
+  const hour = new Date().getHours();
+  console.log(hour);
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour <= closeHour && hour >= openHour;
+  console.log(isOpen);
+
+  // if(hour <= closeHour && hour >= openHour){
+  //   alert("We are Currently Open!!")
+  // }else{
+  //   alert("Sorry!! we're Closed!")
+  // }
+
+  return (
+    <div>
+      <h1>{new Date().toLocaleTimeString()}. We are Currently Closed!!!</h1>
+    </div>
+  );
+}
+
 function Pizza() {
   return (
     <div>
-      <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci"/>
+      <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
       <h2>Pizza Spinaci</h2>
       <p>Tomato, mozarella, spinach, and ricotta cheese</p>
     </div>
-  )
-
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
